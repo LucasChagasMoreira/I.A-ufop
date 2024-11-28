@@ -91,43 +91,51 @@ def shortest_path(source, target):
 
     If no possible path, returns None.
     """
-    inicio = Node(state = source, parent = None, action = None)
+    inicio = Node(state=source, parent=None, action=None)
     fila = QueueFrontier()
     fila.add(inicio)
     explorado = set()
 
     while True:
+        # verificando fila vazia
         if fila.empty():
             return None
 
         node = fila.remove()
 
+        # caso tenha encontrado o "target"
         if node.state == target:
-            resultado[]
+            resultado = []
 
-            while node.parent != None:
-                resultado.append((node.action,node.state))
+            # itera sobre o caminho do "source" ate o "target"
+            while node.parent is not None:
+                resultado.append((node.action, node.state))
                 node = node.parent
 
-            return resultado.reverse()
+            resultado.reverse()
+            return resultado
 
+        # coloca o ator em "explorado"
         explorado.add(node.state)
-        relacionados = neighbors_for_person(node)
+        relacionados = neighbors_for_person(node.state)
         
+        # faz pesquisa nos vizinhos do nó atual
         for filme, ator in relacionados:
             if not fila.contains_state(ator) and ator not in explorado:
-                filho = Node(state=ator,parent=node,action=filme)
+                filho = Node(state=ator, parent=node, action=filme)
                 
+                # caso tenha encontrado o "target"
                 if filho.state == target:
-                    resultado[]
-                
-                    while node.parent != None:
-                        resultado.append((filho.action,filho.state))
+                    resultado = []
+                    # itera sobre o caminho do "source" ate o "target"
+                    while filho.parent is not None:
+                        resultado.append((filho.action, filho.state))
                         filho = filho.parent
                     
-                    return resultado.reverse()
+                    resultado.reverse()
+                    return resultado
 
-                fila.add(ator)
+                fila.add(filho)
                 
 
 def person_id_for_name(name):
