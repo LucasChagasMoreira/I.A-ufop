@@ -1,0 +1,5 @@
+Lucas Chagas Moreira
+
+Repositorio: https://github.com/LucasChagasMoreira/I.A-ufop
+
+Notas: nim (14/14, 1.00), shopping (11/11, 1,00) 
